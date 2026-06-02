@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Convene — Help Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #0a0f0b;
+    --surface: #f4f7f4;
+    --card: #ffffff;
+    --accent: #26B050;
+    --accent-dark: #1a8038;
+    --accent-light: #d6f0dd;
+    --muted: #5a6b5e;
+    --border: #dde8df;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --black: #040505;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--surface);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 68px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo img {
+    height: 30px;
+    width: auto;
+  }
+
+  .logo-text {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+
+  .logo-text span { color: var(--accent); }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+    align-items: center;
+  }
+
+  nav ul a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .15s;
+  }
+
+  nav ul a:hover { color: var(--ink); }
+
+  .nav-cta {
+    background: var(--accent) !important;
+    color: #fff !important;
+    padding: 9px 20px !important;
+    border-radius: 99px;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    transition: background .15s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent-dark) !important; color: #fff !important; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+    padding: 96px 48px 80px;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: -1px; right: -1px;
+    width: 420px; height: 420px;
+    background: var(--accent);
+    border-radius: 50% 0 0 0;
+    opacity: .12;
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 240px; height: 240px;
+    background: var(--accent);
+    border-radius: 0 0 50% 0;
+    opacity: .08;
+    pointer-events: none;
+  }
+
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(38,176,80,.15);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 99px;
+    margin-bottom: 28px;
+    border: 1px solid rgba(38,176,80,.3);
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(38px, 5.5vw, 64px);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -2.5px;
+    color: #ffffff;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero p {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,.65);
+    line-height: 1.65;
+    max-width: 540px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 30px;
+    border-radius: 99px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform .15s, box-shadow .15s, background .15s;
+    box-shadow: 0 4px 24px rgba(38,176,80,.35);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(38,176,80,.45); background: var(--accent-dark); }
+
+  .btn-ghost {
+    color: rgba(255,255,255,.75);
+    padding: 14px 30px;
+    border-radius: 99px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,.2);
+    transition: border-color .15s, color .15s;
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── STATS BAND ── */
+  .stats {
+    display: flex;
+    justify-content: center;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 40px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stat-item {
+    flex: 1;
+    text-align: center;
+    padding: 28px 0;
+    border-right: 1px solid var(--border);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+    letter-spacing: -1px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  /* ── SERVICES GRID ── */
+  .section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 64px 40px 0;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .section-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.5px;
+    margin-bottom: 32px;
+    line-height: 1.2;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .15s, box-shadow .15s, transform .15s;
+    display: block;
+  }
+
+  .service-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 24px rgba(38,176,80,.1);
+    transform: translateY(-2px);
+  }
+
+  .service-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-light);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .service-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.3;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .service-card h3 .plus {
+    color: var(--accent);
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .service-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── FAQ / POPULAR TOPICS ── */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  .faq-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    cursor: pointer;
+    transition: border-color .15s, box-shadow .15s, transform .15s;
+  }
+
+  .faq-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px rgba(38,176,80,.08);
+    transform: translateY(-2px);
+  }
+
+  .faq-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--accent-light);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .faq-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .faq-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* ── QUOTE BAND ── */
+  .quote-band {
+    background: var(--black);
+    padding: 64px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-band::before {
+    content: '"';
+    position: absolute;
+    top: -20px; left: 40px;
+    font-family: 'Syne', sans-serif;
+    font-size: 280px;
+    color: var(--accent);
+    opacity: .06;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .quote-band blockquote {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 600;
+    color: rgba(255,255,255,.9);
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.45;
+    letter-spacing: -0.3px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .quote-band cite {
+    font-size: 13px;
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.3px;
+  }
+
+  .footer-logo span { color: var(--accent); }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; }
+    nav ul { gap: 16px; }
+    .hero { padding: 64px 24px 56px; }
+    .hero h1 { letter-spacing: -1.5px; }
+    .stats { flex-direction: column; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 20px; }
+    .stat-item:last-child { border-bottom: none; }
+    .section { padding: 48px 20px 0; }
+    footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="https://www.convene-tech.com/" class="logo">
+    <img src="https://www.convene-tech.com/wp-content/uploads/2020/05/logo.png" alt="Convene" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+    <span class="logo-text" style="display:none;">Convene<span>.</span></span>
+  </a>
+  <ul>
+    <li><a href="https://www.convene-tech.com/about/">About</a></li>
+    <li><a href="https://www.convene-tech.com/services-solutions/">Services</a></li>
+    <li><a href="https://www.convene-tech.com/outcomes/">Outcomes</a></li>
+    <li><a href="https://www.convene-tech.com/contact/" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-label">✦ AI-powered support</div>
+  <h1>We're <em>Solution</em> People.<br/>Ask us anything.</h1>
+  <p>Our AI support agent is online 24/7. Ask anything about our services, your project, or how we can help — and get a real answer in seconds.</p>
+  <div class="hero-actions">
+    <a href="#" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Chat with our agent
+    </a>
+    <a href="https://www.convene-tech.com/services-solutions/" class="btn-ghost">Explore Services</a>
+  </div>
+</section>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="stat-item"><span class="stat-num">2s</span><div class="stat-label">Average response time</div></div>
+  <div class="stat-item"><span class="stat-num">94%</span><div class="stat-label">Questions resolved by AI</div></div>
+  <div class="stat-item"><span class="stat-num">24/7</span><div class="stat-label">Always available</div></div>
+</div>
+
+<!-- Services -->
+<section class="section">
+  <div class="section-title">What we do</div>
+  <div class="section-heading">Services + Solutions</div>
+  <div class="services-grid">
+    <a href="https://www.convene-tech.com/technical-cofounder/" class="service-card">
+      <div class="service-icon">🚀</div>
+      <h3>Technical Co-Founder <span class="plus">+</span></h3>
+      <p>Providing technical leadership to turn your idea into a market-ready product.</p>
+    </a>
+    <a href="https://www.convene-tech.com/application-modernization/" class="service-card">
+      <div class="service-icon">⚙️</div>
+      <h3>Application Modernization <span class="plus">+</span></h3>
+      <p>Bringing legacy systems into the cloud-native era without disrupting your business.</p>
+    </a>
+    <a href="https://www.convene-tech.com/custom-development/" class="service-card">
+      <div class="service-icon">💻</div>
+      <h3>Custom Development <span class="plus">+</span></h3>
+      <p>Bespoke software built around your workflow, not the other way around.</p>
+    </a>
+    <a href="https://www.convene-tech.com/servicenow-2026/" class="service-card">
+      <div class="service-icon">🔧</div>
+      <h3>ServiceNow Solutions <span class="plus">+</span></h3>
+      <p>Streamline IT operations and enterprise workflows with certified ServiceNow expertise.</p>
+    </a>
+    <a href="https://www.convene-tech.com/mobile-development/" class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>Mobile Applications <span class="plus">+</span></h3>
+      <p>Native and cross-platform apps that delight users on every device.</p>
+    </a>
+    <a href="https://www.convene-tech.com/vciso/" class="service-card">
+      <div class="service-icon">🔒</div>
+      <h3>vCISO <span class="plus">+</span></h3>
+      <p>Virtual CISO services to keep your security posture sharp and compliant.</p>
+    </a>
+    <a href="https://www.convene-tech.com/salesforce-solutions/" class="service-card">
+      <div class="service-icon">☁️</div>
+      <h3>Salesforce Solutions <span class="plus">+</span></h3>
+      <p>Implementation, customization, and support across the full Salesforce platform.</p>
+    </a>
+    <a href="https://www.convene-tech.com/non-profit-salesforce/" class="service-card">
+      <div class="service-icon">❤️</div>
+      <h3>Non-Profit Salesforce <span class="plus">+</span></h3>
+      <p>Purpose-built Salesforce solutions for mission-driven organizations.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FAQ / Popular Topics -->
+<section class="section">
+  <div class="section-title">Popular topics</div>
+  <div class="section-heading">How can we help?</div>
+  <div class="faq-grid">
+    <div class="faq-card">
+      <div class="faq-icon">🌍</div>
+      <h3>Our locations</h3>
+      <p>Where are your offices? US, India, Mexico, and Middle East coverage.</p>
+    </div>
+    <div class="faq-card">
+      <div class="faq-icon">🤝</div>
+      <h3>Partnership model</h3>
+      <p>How does Convene work with our team? What does the engagement look like?</p>
+    </div>
+    <div class="faq-card">
+      <div class="faq-icon">⚡</div>
+      <h3>Getting started</h3>
+      <p>How quickly can we kick off a project? What's the onboarding process?</p>
+    </div>
+    <div class="faq-card">
+      <div class="faq-icon">📊</div>
+      <h3>Outcomes & ROI</h3>
+      <p>What measurable results have you delivered for similar clients?</p>
+    </div>
+    <div class="faq-card">
+      <div class="faq-icon">🏗️</div>
+      <h3>Agile & nearshore</h3>
+      <p>How do you handle distributed teams and agile delivery across time zones?</p>
+    </div>
+    <div class="faq-card">
+      <div class="faq-icon">🧑‍💼</div>
+      <h3>Talk to a person</h3>
+      <p>Prefer a human? Connect directly with our solutions team.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Quote Band -->
+<div class="quote-band">
+  <blockquote>"Convene's ability to provide direction on the technical side and develop applications that fit my vision has made a true difference in our success."</blockquote>
+  <cite>— David Farmer, Founder, intice</cite>
+</div>
+
+<!-- Footer -->
+<footer>
+  <a href="https://www.convene-tech.com/" class="footer-logo">Convene<span>.</span></a>
+  <ul class="footer-links">
+    <li><a href="https://www.convene-tech.com/about/">About</a></li>
+    <li><a href="https://www.convene-tech.com/outcomes/">Outcomes</a></li>
+    <li><a href="https://www.convene-tech.com/search-jobs/">Jobs</a></li>
+    <li><a href="https://www.convene-tech.com/privacy-policy/">Privacy</a></li>
+    <li><a href="https://www.convene-tech.com/contact/">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Convene Inc. · Powered by Salesforce Agentforce</span>
+</footer>
+
+<!-- Agentforce Embedded Messaging (preserved from original) -->
+<script type='text/javascript'>
+  function initEmbeddedMessaging() {
+    try {
+      embeddedservice_bootstrap.settings.language = 'en_US';
+      embeddedservice_bootstrap.init(
+        '00DgL00000Pvc6z',
+        'ConveneIncTest',
+        'https://convenetech-dev-ed.develop.my.site.com/ESWConveneIncTest1780288162630',
+        {
+          scrt2URL: 'https://convenetech-dev-ed.develop.my.salesforce-scrt.com'
+        }
+      );
+    } catch (err) {
+      console.error('Error loading Embedded Messaging: ', err);
+    }
+  };
+</script>
+<script type='text/javascript'
+  src='https://convenetech-dev-ed.develop.my.site.com/ESWConveneIncTest1780288162630/assets/js/bootstrap.min.js'
+  onload='initEmbeddedMessaging()'>
+</script>
+
+</body>
+</html>
