@@ -622,24 +622,18 @@
   </ul>
   <span class="footer-copy">© 2025 Convene Inc. · Powered by Salesforce Agentforce</span>
 </footer>
-
 <script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-            embeddedservice_bootstrap.settings.devMode = true;
-			embeddedservice_bootstrap.init(
-				'00Dfk000001VCsL',
-				'ConveneWebBot',
-				'https://conveneinc3.my.site.com/ESWConveneWebBot1791797888302',
-				{
-					scrt2URL: 'https://conveneinc3.my.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
+   function initEmbeddedMessaging() {
+     try {
+       embeddedservice_bootstrap.settings.language = 'en_US';
+       embeddedservice_bootstrap.init(
+         '00Dfk000001VCsL',
+         'ConveneWebBot',
+         'https://conveneinc3.my.site.com/ESWConveneWebBot1791797888302',
+         { scrt2URL: 'https://conveneinc3.my.salesforce-scrt.com' }
+       );
+     } catch (err) { console.error('Error loading Embedded Messaging: ', err); }
+   };
 </script>
 <script type='text/javascript' src='https://conveneinc3.my.site.com/ESWConveneWebBot1791797888302/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
